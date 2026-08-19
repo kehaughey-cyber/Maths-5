@@ -4,8 +4,8 @@
 where every historic conflation in this project lived — the two roads, the three
 twelves, the two senses of *internal* — and diffused through prose they recur forever.
 
-**Status: the first boundary is probed, not yet declared.** Probing it changed what the
-boundary is.
+**Status: 6 → 7 is DECLARED.** Probing it changed what the boundary is, and deriving it
+closed the gap.
 
 ---
 
@@ -77,3 +77,42 @@ This is the protocol's determinacy field earning its place on the first object i
    module* (`dirs`, `sixDirs` in `IcosianLattice.lean`), which is container 5's object, not
    container 6's. Whether E8 sits downstream of the icosahedron or the carrier is a
    reading, and it is Kevin's.
+
+
+---
+
+## 6 → 7 · DECLARED, 2026-08-15
+
+**E8 sits downstream of the CARRIER, not the icosahedron.** Measured: `IcosianE8.lean`
+contains **zero** occurrences of `dirs`, `sixDirs`, `Vec6`, `overlap` or any rank-6 symbol.
+It uses `icosianBasis`, `icosianGram`, `halfGram` — all quaternionic, all container 6's.
+
+My earlier suggestion that the E8 line runs off the rank-6 module was **wrong**, inferred
+from the import edge without checking which definitions were used. Corrected here.
+
+**The confusion has a cause worth carrying: `IcosianLattice.lean` holds two containers'
+material in one file.** Its own section headers say so — sections 1–7 are the rank-6
+icosahedral module (rank obstruction, the three overlaps, the cuboctahedron, rank 6 inside
+rank 8, the 12+20 shell, the index), and **section 8 alone** is *"the icosian ring is E8"*.
+Splitting that file is part of the migration.
+
+### What crosses the boundary
+
+| object | criterion | determinacy |
+|---|---|---|
+| **the 120 icosians** | the unit icosians; equivalently 2I generated from s, t | UNIQUE UP TO conjugation by a coordinate permutation |
+| **the icosian ring basis** | HNF of the ℤ-span of {q, φq : q ∈ the 120}, doubled coordinates | **UNIQUE** (HNF is canonical) |
+| **the codifferent form** | `B(x,y) = Tr(δ⟨x,y⟩)`, δ = φ/√5, totally positive | UNIQUE |
+| **the isometry `emb`** | integer M with `M·Mᵀ = 2G` **and every row in L** | UNIQUE UP TO Aut(L) |
+
+**Four objects. That is the whole interface.**
+
+### A criterion that was incomplete, and how that surfaced
+
+The first criterion written for `emb` was `M·Mᵀ = 2G` alone. The search satisfied it and
+returned an M whose rows are **not in L** — a valid factorisation that is not an isometry
+onto the textbook lattice. **The criterion admitted the wrong thing, and running it is what
+revealed that.** Adding the L condition gives the intended object.
+
+That is the protocol's own failure mode caught by its own method: an under-specified
+criterion is found by execution, never by reading.
